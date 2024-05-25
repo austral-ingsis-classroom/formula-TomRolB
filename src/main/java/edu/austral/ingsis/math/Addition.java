@@ -2,11 +2,11 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Sum implements BinaryOperation {
+public class Addition implements BinaryOperation {
   private final Symbol first;
   private final Symbol second;
 
-  public Sum(Symbol first, Symbol second) {
+  public Addition(Symbol first, Symbol second) {
     this.first = first;
     this.second = second;
   }

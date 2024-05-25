@@ -10,7 +10,7 @@ public class ResolutionTest {
   /** Case 1 + 6 */
   @Test
   public void shouldResolveSimpleFunction1() {
-    final Function function = new FunctionImpl(new Sum(new Constant(1), new Constant(6)));
+    final Function function = new FunctionImpl(new Addition(new Constant(1), new Constant(6)));
 
     final Double result = function.compute();
 
@@ -32,7 +32,7 @@ public class ResolutionTest {
   public void shouldResolveSimpleFunction3() {
     final Function function =
         new FunctionImpl(
-            new Product(new Division(new Constant(9), new Constant(2)), new Constant(3)));
+            new Multiplication(new Division(new Constant(9), new Constant(2)), new Constant(3)));
 
     final Double result = function.compute();
 
@@ -44,7 +44,7 @@ public class ResolutionTest {
   public void shouldResolveSimpleFunction4() {
     final Function function =
         new FunctionImpl(
-            new Power(new Division(new Constant(27), new Constant(6)), new Constant(2)));
+            new Exponentiation(new Division(new Constant(27), new Constant(6)), new Constant(2)));
 
     final Double result = function.compute();
 
@@ -55,7 +55,7 @@ public class ResolutionTest {
   @Test
   public void shouldResolveSimpleFunction5() {
     final Function function = new FunctionImpl(
-            new Power(
+            new Exponentiation(
                     new Constant(36),
                     new Constant(0.5)
             )
@@ -91,7 +91,7 @@ public class ResolutionTest {
   public void shouldResolveSimpleFunction8() {
     final Function function =
         new FunctionImpl(
-            new Product(new Difference(new Constant(5), new Constant(5)), new Constant(8)));
+            new Multiplication(new Substraction(new Constant(5), new Constant(5)), new Constant(8)));
 
     final Double result = function.compute();
 

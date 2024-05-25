@@ -3,11 +3,11 @@ package edu.austral.ingsis.math;
 import java.util.Map;
 
 // TODO: could make it receive any power
-public class Power implements BinaryOperation {
+public class Exponentiation implements BinaryOperation {
   private final Symbol first;
   private final Symbol second;
 
-  public Power(Symbol first, Symbol second) {
+  public Exponentiation(Symbol first, Symbol second) {
     this.first = first;
     this.second = second;
   }

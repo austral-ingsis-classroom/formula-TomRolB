@@ -35,16 +35,16 @@ public class Printer implements Visitor {
   }
 
   @Override
-  public void visit(Sum sum) {
+  public void visit(Addition addition) {
     printResult.append("(");
-    sum.getFirst().accept(this);
+    addition.getFirst().accept(this);
     printResult.append(" + ");
-    sum.getSecond().accept(this);
+    addition.getSecond().accept(this);
     printResult.append(")");
   }
 
   @Override
-  public void visit(Difference diff) {
+  public void visit(Substraction diff) {
     printResult.append("(");
     diff.getFirst().accept(this);
     printResult.append(" - ");
@@ -53,7 +53,7 @@ public class Printer implements Visitor {
   }
 
   @Override
-  public void visit(Product prod) {
+  public void visit(Multiplication prod) {
     printResult.append("(");
     prod.getFirst().accept(this);
     printResult.append(" * ");
@@ -78,7 +78,7 @@ public class Printer implements Visitor {
   }
 
   @Override
-  public void visit(Power pow) {
+  public void visit(Exponentiation pow) {
     pow.getFirst().accept(this);
     printResult.append(" ^ ");
     pow.getSecond().accept(this);

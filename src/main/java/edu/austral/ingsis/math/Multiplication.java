@@ -2,11 +2,11 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Product implements BinaryOperation {
+public class Multiplication implements BinaryOperation {
   private final Symbol first;
   private final Symbol second;
 
-  public Product(Symbol first, Symbol second) {
+  public Multiplication(Symbol first, Symbol second) {
     this.first = first;
     this.second = second;
   }

@@ -19,19 +19,19 @@ public class VariableFinder implements Visitor {
   }
 
   @Override
-  public void visit(Sum sum) {
-    sum.getFirst().accept(this);
-    sum.getSecond().accept(this);
+  public void visit(Addition addition) {
+    addition.getFirst().accept(this);
+    addition.getSecond().accept(this);
   }
 
   @Override
-  public void visit(Difference diff) {
+  public void visit(Substraction diff) {
     diff.getFirst().accept(this);
     diff.getSecond().accept(this);
   }
 
   @Override
-  public void visit(Product prod) {
+  public void visit(Multiplication prod) {
     prod.getFirst().accept(this);
     prod.getSecond().accept(this);
   }
@@ -48,7 +48,7 @@ public class VariableFinder implements Visitor {
   }
 
   @Override
-  public void visit(Power pow) {
+  public void visit(Exponentiation pow) {
     pow.getFirst().accept(this);
     pow.getSecond().accept(this);
   }

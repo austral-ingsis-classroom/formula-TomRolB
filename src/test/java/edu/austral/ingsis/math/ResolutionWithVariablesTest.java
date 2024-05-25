@@ -11,7 +11,7 @@ public class ResolutionWithVariablesTest {
   /** Case 1 + x where x = 3 */
   @Test
   public void shouldResolveFunction1() {
-    final Function function = new FunctionImpl(new Sum(new Constant(1), new Variable("x")));
+    final Function function = new FunctionImpl(new Addition(new Constant(1), new Variable("x")));
     final Double result = function.computeWithValues(Map.of("x", 3d));
 
     assertThat(result, equalTo(4d));
@@ -31,7 +31,7 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction3() {
     final Function function =
         new FunctionImpl(
-            new Product(new Division(new Constant(9), new Variable("x")), new Variable("y")));
+            new Multiplication(new Division(new Constant(9), new Variable("x")), new Variable("y")));
     final Double result = function.computeWithValues(Map.of("x", 3d, "y", 4d));
 
     assertThat(result, equalTo(12d));
@@ -42,7 +42,7 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction4() {
     final Function function =
         new FunctionImpl(
-            new Power(new Division(new Constant(27), new Variable("a")), new Variable("b")));
+            new Exponentiation(new Division(new Constant(27), new Variable("a")), new Variable("b")));
     final Double result = function.computeWithValues(Map.of("a", 9d, "b", 3d));
 
     assertThat(result, equalTo(27d));
@@ -52,7 +52,7 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction5() {
     final Function function = new FunctionImpl(
-            new Power(
+            new Exponentiation(
                     new Variable("z"),
                     new Constant(0.5)
             )
@@ -66,7 +66,7 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction6() {
     final Function function =
-        new FunctionImpl(new Difference(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
     final Double result = function.computeWithValues(Map.of("value", 8d));
 
     assertThat(result, equalTo(0d));
@@ -76,7 +76,7 @@ public class ResolutionWithVariablesTest {
   @Test
   public void shouldResolveFunction7() {
     final Function function =
-        new FunctionImpl(new Difference(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
     final Double result = function.computeWithValues(Map.of("value", 8d));
 
     assertThat(result, equalTo(0d));
@@ -87,7 +87,7 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction8() {
     final Function function =
         new FunctionImpl(
-            new Product(new Difference(new Constant(5), new Variable("i")), new Constant(8)));
+            new Multiplication(new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
     final Double result = function.computeWithValues(Map.of("i", 2d));
 
     assertThat(result, equalTo(24d));

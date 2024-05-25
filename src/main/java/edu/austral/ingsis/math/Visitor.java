@@ -5,17 +5,17 @@ public interface Visitor {
 
   void visit(Variable variable);
 
-  void visit(Sum sum);
+  void visit(Addition addition);
 
-  void visit(Difference diff);
+  void visit(Substraction diff);
 
-  void visit(Product prod);
+  void visit(Multiplication prod);
 
   void visit(Division div);
 
   void visit(Module mod);
 
-  void visit(Power pow);
+  void visit(Exponentiation pow);
 
   void visit(Function function);
 }
