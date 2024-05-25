@@ -26,7 +26,14 @@ public class Printer implements Visitor {
 
   @Override
   public void visit(Constant constant) {
-    printResult.append((int) constant.getValue());
+    double value = constant.getValue();
+
+    if (convertibleToInt(value)) printResult.append((int) value);
+    else printResult.append(value);
+  }
+
+  private static boolean convertibleToInt(double value) {
+    return value % 1 == 0;
   }
 
   @Override
