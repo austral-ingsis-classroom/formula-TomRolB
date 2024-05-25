@@ -31,7 +31,8 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction3() {
     final Function function =
         new FunctionImpl(
-            new Multiplication(new Division(new Constant(9), new Variable("x")), new Variable("y")));
+            new Multiplication(
+                new Division(new Constant(9), new Variable("x")), new Variable("y")));
     final Double result = function.computeWithValues(Map.of("x", 3d, "y", 4d));
 
     assertThat(result, equalTo(12d));
@@ -42,7 +43,8 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction4() {
     final Function function =
         new FunctionImpl(
-            new Exponentiation(new Division(new Constant(27), new Variable("a")), new Variable("b")));
+            new Exponentiation(
+                new Division(new Constant(27), new Variable("a")), new Variable("b")));
     final Double result = function.computeWithValues(Map.of("a", 9d, "b", 3d));
 
     assertThat(result, equalTo(27d));
@@ -51,12 +53,8 @@ public class ResolutionWithVariablesTest {
   /** Case z ^ (1/2) where z = 36 */
   @Test
   public void shouldResolveFunction5() {
-    final Function function = new FunctionImpl(
-            new Exponentiation(
-                    new Variable("z"),
-                    new Constant(0.5)
-            )
-    );
+    final Function function =
+        new FunctionImpl(new Exponentiation(new Variable("z"), new Constant(0.5)));
     final Double result = function.computeWithValues(Map.of("z", 36d));
 
     assertThat(result, equalTo(6d));
@@ -87,7 +85,8 @@ public class ResolutionWithVariablesTest {
   public void shouldResolveFunction8() {
     final Function function =
         new FunctionImpl(
-            new Multiplication(new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
+            new Multiplication(
+                new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
     final Double result = function.computeWithValues(Map.of("i", 2d));
 
     assertThat(result, equalTo(24d));

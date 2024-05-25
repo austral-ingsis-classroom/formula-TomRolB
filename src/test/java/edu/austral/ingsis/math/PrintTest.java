@@ -90,7 +90,8 @@ public class PrintTest {
     final String expected = "(5 - i) * 8";
     final Function function =
         new FunctionImpl(
-            new Multiplication(new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
+            new Multiplication(
+                new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
 
     final String result = getResult(function);
 

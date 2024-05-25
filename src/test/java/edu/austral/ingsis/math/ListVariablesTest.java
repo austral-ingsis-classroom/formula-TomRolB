@@ -33,7 +33,8 @@ public class ListVariablesTest {
   public void shouldListVariablesFunction3() {
     final Function function =
         new FunctionImpl(
-            new Multiplication(new Division(new Constant(9), new Variable("x")), new Variable("y")));
+            new Multiplication(
+                new Division(new Constant(9), new Variable("x")), new Variable("y")));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("x", "y"));
@@ -44,7 +45,8 @@ public class ListVariablesTest {
   public void shouldListVariablesFunction4() {
     final Function function =
         new FunctionImpl(
-            new Exponentiation(new Division(new Constant(27), new Variable("a")), new Variable("b")));
+            new Exponentiation(
+                new Division(new Constant(27), new Variable("a")), new Variable("b")));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("a", "b"));
@@ -53,12 +55,8 @@ public class ListVariablesTest {
   /** Case z ^ (1/2) */
   @Test
   public void shouldListVariablesFunction5() {
-    final Function function = new FunctionImpl(
-            new Exponentiation(
-                    new Variable("z"),
-                    new Constant(0.5)
-            )
-    );
+    final Function function =
+        new FunctionImpl(new Exponentiation(new Variable("z"), new Constant(0.5)));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("z"));
@@ -89,7 +87,8 @@ public class ListVariablesTest {
   public void shouldListVariablesFunction8() {
     final Function function =
         new FunctionImpl(
-            new Multiplication(new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
+            new Multiplication(
+                new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("i"));
