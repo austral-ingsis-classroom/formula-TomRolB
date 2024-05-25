@@ -54,11 +54,6 @@ public class VariableFinder implements Visitor {
   }
 
   @Override
-  public void visit(Sqrt sqrt) {
-    sqrt.getSubSymbol().accept(this);
-  }
-
-  @Override
   public void visit(Function function) {
     function.getRootSymbol().accept(this);
   }

@@ -4,7 +4,8 @@ public class Printer implements Visitor {
   private StringBuilder printResult = new StringBuilder();
 
   public String getResult() {
-    if (printResult.isEmpty()) {
+    // Cannot use isEmpty() for compatibility reasons
+    if (printResult.length() == 0) {
       throw new IllegalStateException("There is no formula to print");
     }
 
@@ -81,13 +82,6 @@ public class Printer implements Visitor {
     pow.getFirst().accept(this);
     printResult.append(" ^ ");
     pow.getSecond().accept(this);
-  }
-
-  @Override
-  public void visit(Sqrt sqrt) {
-    printResult.append("√(");
-    sqrt.getSubSymbol().accept(this);
-    printResult.append(")");
   }
 
   @Override
