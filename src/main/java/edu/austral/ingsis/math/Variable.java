@@ -1,6 +1,7 @@
 package edu.austral.ingsis.math;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class Variable implements Symbol {
   private final String name;
@@ -20,6 +21,8 @@ public class Variable implements Symbol {
 
   @Override
   public Double computeWithValues(Map<String, Double> values) {
-    return values.get(name);
+    return Optional.ofNullable(values.get(name))
+        .orElseThrow(
+            () -> new IllegalArgumentException("No value was passed for variable " + name));
   }
 }
