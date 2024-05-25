@@ -2,11 +2,11 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Substraction implements BinaryOperation {
+public class Subtraction implements BinaryOperation {
   private final Symbol first;
   private final Symbol second;
 
-  public Substraction(Symbol first, Symbol second) {
+  public Subtraction(Symbol first, Symbol second) {
     this.first = first;
     this.second = second;
   }

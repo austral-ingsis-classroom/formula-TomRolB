@@ -65,7 +65,7 @@ public class PrintTest {
   public void shouldPrintFunction6() {
     final String expected = "|value| - 8";
     final Function function =
-        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Subtraction(new Module(new Variable("value")), new Constant(8)));
 
     final String result = getResult(function);
 
@@ -77,7 +77,7 @@ public class PrintTest {
   public void shouldPrintFunction7() {
     final String expected = "|value| - 8";
     final Function function =
-        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Subtraction(new Module(new Variable("value")), new Constant(8)));
 
     final String result = getResult(function);
 
@@ -91,7 +91,7 @@ public class PrintTest {
     final Function function =
         new FunctionImpl(
             new Multiplication(
-                new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
+                new Subtraction(new Constant(5), new Variable("i")), new Constant(8)));
 
     final String result = getResult(function);
 

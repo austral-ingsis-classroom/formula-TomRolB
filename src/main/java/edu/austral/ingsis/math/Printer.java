@@ -44,20 +44,20 @@ public class Printer implements Visitor {
   }
 
   @Override
-  public void visit(Substraction diff) {
+  public void visit(Subtraction sub) {
     printResult.append("(");
-    diff.getFirst().accept(this);
+    sub.getFirst().accept(this);
     printResult.append(" - ");
-    diff.getSecond().accept(this);
+    sub.getSecond().accept(this);
     printResult.append(")");
   }
 
   @Override
-  public void visit(Multiplication prod) {
+  public void visit(Multiplication mult) {
     printResult.append("(");
-    prod.getFirst().accept(this);
+    mult.getFirst().accept(this);
     printResult.append(" * ");
-    prod.getSecond().accept(this);
+    mult.getSecond().accept(this);
     printResult.append(")");
   }
 
@@ -78,10 +78,10 @@ public class Printer implements Visitor {
   }
 
   @Override
-  public void visit(Exponentiation pow) {
-    pow.getFirst().accept(this);
+  public void visit(Exponentiation exp) {
+    exp.getFirst().accept(this);
     printResult.append(" ^ ");
-    pow.getSecond().accept(this);
+    exp.getSecond().accept(this);
   }
 
   @Override

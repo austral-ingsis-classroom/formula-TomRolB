@@ -25,15 +25,15 @@ public class VariableFinder implements Visitor {
   }
 
   @Override
-  public void visit(Substraction diff) {
-    diff.getFirst().accept(this);
-    diff.getSecond().accept(this);
+  public void visit(Subtraction sub) {
+    sub.getFirst().accept(this);
+    sub.getSecond().accept(this);
   }
 
   @Override
-  public void visit(Multiplication prod) {
-    prod.getFirst().accept(this);
-    prod.getSecond().accept(this);
+  public void visit(Multiplication mult) {
+    mult.getFirst().accept(this);
+    mult.getSecond().accept(this);
   }
 
   @Override
@@ -48,9 +48,9 @@ public class VariableFinder implements Visitor {
   }
 
   @Override
-  public void visit(Exponentiation pow) {
-    pow.getFirst().accept(this);
-    pow.getSecond().accept(this);
+  public void visit(Exponentiation exp) {
+    exp.getFirst().accept(this);
+    exp.getSecond().accept(this);
   }
 
   @Override

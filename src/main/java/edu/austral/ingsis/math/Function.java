@@ -3,12 +3,11 @@ package edu.austral.ingsis.math;
 import java.util.List;
 import java.util.Map;
 
-public interface Function extends Visitable {
+public interface Function extends Symbol {
   List<String> getAllVariables();
 
   Double compute();
 
-  Double computeWithValues(Map<String, Double> values);
-
+  //TODO: isn't this actually sth specific of the implementation?
   Visitable getRootSymbol();
 }

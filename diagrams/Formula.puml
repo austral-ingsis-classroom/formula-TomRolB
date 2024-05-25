@@ -6,11 +6,17 @@ interface Visitable {
 }
 
 interface Visitor {
-    + visit(constant: Constant)
+    + visit(constant: Constant )
     + visit(variable: Variable)
-    + visit(unary: UnaryOperation)
-    + visit(binary: BinaryOperation)
+    + visit(addition: Addition)
+    + visit(sub: Subtraction)
+    + visit(mult: Multiplication)
+    + visit(div: Division)
+    + visit(mod: Module)
+    + visit(exp: Exponentiation)
+    + visit(function: Function)
 }
+
 interface Symbol extends Visitable {
     + accept(visitor: Visitor)
 }
@@ -18,10 +24,13 @@ interface Symbol extends Visitable {
 class Constant implements Symbol {
     - value: double
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
 }
 
 interface UnaryOperation extends Symbol {
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+    + getSubSymbol(): Symbol
 }
 
 class Sqrt implements UnaryOperation {
@@ -38,12 +47,55 @@ class Module implements UnaryOperation {
 
 interface BinaryOperation extends Symbol {
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+    + getFirst(): Symbol
+    + getSecond(): Symbol
 }
 
-class Sum implements BinaryOperation
-class Difference implements BinaryOperation
-class Product implements BinaryOperation
-class Division implements BinaryOperation
+class Addition implements BinaryOperation {
+    - first: Symbol
+    - second: Symbol
+    + getFirst: Symbol
+    + getSecond: Symbol
+    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+}
+
+class Subtraction implements BinaryOperation {
+    - first: Symbol
+    - second: Symbol
+    + getFirst: Symbol
+    + getSecond: Symbol
+    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+}
+
+class Multiplication implements BinaryOperation {
+    - first: Symbol
+    - second: Symbol
+    + getFirst: Symbol
+    + getSecond: Symbol
+    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+}
+
+class Division implements BinaryOperation {
+    - first: Symbol
+    - second: Symbol
+    + getFirst: Symbol
+    + getSecond: Symbol
+    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+}
+
+class Exponentiation implements BinaryOperation {
+    - first: Symbol
+    - second: Symbol
+    + getFirst: Symbol
+    + getSecond: Symbol
+    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+}
 
 class Variable implements Symbol {
     - name: String
@@ -52,17 +104,51 @@ class Variable implements Symbol {
 
 interface Function extends Visitable {
     + getAllVariables(): List<String>
-    + accept(visitor: Visitor)
+    + compute(): Double
+    + computeWithValues(Map<String, Double> values): Double
+    + getRootSymbol(): Visitable
 }
 
-class Solver implements Visitor {
+class FunctionImpl implements Function {
+    + getAllVariables(): List<String>
+    + compute(): Double
+    + computeWithValues(Map<String, Double> values): Double
+    + getRootSymbol(): Visitable
+}
+
+class Printer implements Visitor {
+    - result: StringBuilder
+    + getResult(): String
+    + eraseOuterBracesIfNeeded(string: String): String
     + visit(constant: Constant)
-        + visit(variable: Variable)
-        + visit(unary: UnaryOperation)
-        + visit(binary: BinaryOperation)
+    + visit(variable: Variable)
+    + visit(addition: Addition)
+    + visit(sub: Subtraction)
+    + visit(mult: Multiplication)
+    + visit(div: Division)
+    + visit(mod: Module)
+    + visit(exp: Exponentiation)
+    + visit(function: Function)
 }
 
-Function *--> Symbol
+class VariableFinder implements Visitor {
+    - result: List<String>
+    + getResult(): List<String>
+    + eraseOuterBracesIfNeeded(string: String): String
+    + visit(constant: Constant)
+    + visit(variable: Variable)
+    + visit(addition: Addition)
+    + visit(sub: Subtraction)
+    + visit(mult: Multiplication)
+    + visit(div: Division)
+    + visit(mod: Module)
+    + visit(exp: Exponentiation)
+    + visit(function: Function)
+}
+
+Function *---> Symbol
+UnaryOperation *--> Symbol
+BinaryOperation *--> Symbol
 Visitable -> Visitor
 
 @enduml

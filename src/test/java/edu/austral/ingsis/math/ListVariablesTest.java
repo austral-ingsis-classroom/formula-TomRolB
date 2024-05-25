@@ -66,7 +66,7 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction6() {
     final Function function =
-        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Subtraction(new Module(new Variable("value")), new Constant(8)));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("value"));
@@ -76,7 +76,7 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction7() {
     final Function function =
-        new FunctionImpl(new Substraction(new Module(new Variable("value")), new Constant(8)));
+        new FunctionImpl(new Subtraction(new Module(new Variable("value")), new Constant(8)));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("value"));
@@ -88,7 +88,7 @@ public class ListVariablesTest {
     final Function function =
         new FunctionImpl(
             new Multiplication(
-                new Substraction(new Constant(5), new Variable("i")), new Constant(8)));
+                new Subtraction(new Constant(5), new Variable("i")), new Constant(8)));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("i"));
