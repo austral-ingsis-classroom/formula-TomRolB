@@ -87,8 +87,7 @@ public class ResolutionTest {
   public void shouldResolveSimpleFunction8() {
     final Function function =
         new FunctionImpl(
-            new Multiplication(
-                new Subtraction(new Constant(5), new Constant(5)), new Constant(8)));
+            new Multiplication(new Subtraction(new Constant(5), new Constant(5)), new Constant(8)));
 
     final Double result = function.compute();
 
