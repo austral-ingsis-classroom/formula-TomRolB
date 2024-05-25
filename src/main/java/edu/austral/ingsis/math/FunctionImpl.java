@@ -29,7 +29,7 @@ public class FunctionImpl implements Function {
   }
 
   @Override
-  public Visitable getRootSymbol() {
+  public Symbol getRootSymbol() {
     return root;
   }
 

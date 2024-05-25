@@ -8,5 +8,5 @@ public interface Function extends Symbol {
   Double compute();
 
   // TODO: isn't this actually sth specific of the implementation?
-  Visitable getRootSymbol();
+  Symbol getRootSymbol();
 }

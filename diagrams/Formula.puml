@@ -19,6 +19,7 @@ interface Visitor {
 
 interface Symbol extends Visitable {
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
 }
 
 class Constant implements Symbol {
@@ -102,18 +103,18 @@ class Variable implements Symbol {
     + accept(visitor: Visitor)
 }
 
-interface Function extends Visitable {
+interface Function extends Symbol {
     + getAllVariables(): List<String>
     + compute(): Double
     + computeWithValues(Map<String, Double> values): Double
-    + getRootSymbol(): Visitable
+    + getRootSymbol(): Symbol
 }
 
 class FunctionImpl implements Function {
     + getAllVariables(): List<String>
     + compute(): Double
     + computeWithValues(Map<String, Double> values): Double
-    + getRootSymbol(): Visitable
+    + getRootSymbol(): Symbol
 }
 
 class Printer implements Visitor {
@@ -146,7 +147,7 @@ class VariableFinder implements Visitor {
     + visit(function: Function)
 }
 
-Function *---> Symbol
+Function *-> Symbol
 UnaryOperation *--> Symbol
 BinaryOperation *--> Symbol
 Visitable -> Visitor
