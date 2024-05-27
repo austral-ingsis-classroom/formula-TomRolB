@@ -13,6 +13,7 @@ interface Visitor {
     + visit(mult: Multiplication)
     + visit(div: Division)
     + visit(mod: Module)
+    + visit(sqrt: Sqrt)
     + visit(exp: Exponentiation)
     + visit(function: Function)
 }
@@ -35,15 +36,17 @@ interface UnaryOperation extends Symbol {
 }
 
 class Sqrt implements UnaryOperation {
+    - subSymbol: Symbol
     + accept(visitor: Visitor)
-}
-
-class Pow implements UnaryOperation {
-    + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+    + getSubSymbol(): Symbol
 }
 
 class Module implements UnaryOperation {
+    - subSymbol: Symbol
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
+    + getSubSymbol(): Symbol
 }
 
 interface BinaryOperation extends Symbol {
@@ -101,6 +104,7 @@ class Exponentiation implements BinaryOperation {
 class Variable implements Symbol {
     - name: String
     + accept(visitor: Visitor)
+    + computeWithValues(Map<String, Double> values): Double
 }
 
 interface Function extends Symbol {
@@ -128,6 +132,7 @@ class Printer implements Visitor {
     + visit(mult: Multiplication)
     + visit(div: Division)
     + visit(mod: Module)
+    + visit(sqrt: Sqrt)
     + visit(exp: Exponentiation)
     + visit(function: Function)
 }
@@ -143,6 +148,7 @@ class VariableFinder implements Visitor {
     + visit(mult: Multiplication)
     + visit(div: Division)
     + visit(mod: Module)
+    + visit(sqrt: Sqrt)
     + visit(exp: Exponentiation)
     + visit(function: Function)
 }

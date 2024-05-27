@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VariableFinder implements Visitor {
-  List<String> result = new ArrayList<>();
+  final List<String> result = new ArrayList<>();
 
   public List<String> getResult() {
     return result;
@@ -56,5 +56,10 @@ public class VariableFinder implements Visitor {
   @Override
   public void visit(Function function) {
     function.getRootSymbol().accept(this);
+  }
+
+  @Override
+  public void visit(Sqrt sqrt) {
+    sqrt.getSubSymbol().accept(this);
   }
 }

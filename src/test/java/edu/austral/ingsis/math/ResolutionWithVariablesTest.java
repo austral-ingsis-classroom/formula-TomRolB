@@ -53,8 +53,7 @@ public class ResolutionWithVariablesTest {
   /** Case z ^ (1/2) where z = 36 */
   @Test
   public void shouldResolveFunction5() {
-    final Function function =
-        new FunctionImpl(new Exponentiation(new Variable("z"), new Constant(0.5)));
+    final Function function = new FunctionImpl(new Sqrt(new Variable("z")));
     final Double result = function.computeWithValues(Map.of("z", 36d));
 
     assertThat(result, equalTo(6d));

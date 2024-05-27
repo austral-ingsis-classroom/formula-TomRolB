@@ -55,8 +55,7 @@ public class ListVariablesTest {
   /** Case z ^ (1/2) */
   @Test
   public void shouldListVariablesFunction5() {
-    final Function function =
-        new FunctionImpl(new Exponentiation(new Variable("z"), new Constant(0.5)));
+    final Function function = new FunctionImpl(new Sqrt(new Variable("z")));
     final List<String> result = function.getAllVariables();
 
     assertThat(result, containsInAnyOrder("z"));

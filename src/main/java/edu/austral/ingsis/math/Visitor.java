@@ -18,4 +18,6 @@ public interface Visitor {
   void visit(Exponentiation exp);
 
   void visit(Function function);
+
+  void visit(Sqrt sqrt);
 }

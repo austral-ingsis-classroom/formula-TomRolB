@@ -2,7 +2,6 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-// TODO: could make it receive any power
 public class Exponentiation implements BinaryOperation {
   private final Symbol first;
   private final Symbol second;

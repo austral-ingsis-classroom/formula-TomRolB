@@ -54,8 +54,7 @@ public class ResolutionTest {
   /** Case 36 ^ (1/2) */
   @Test
   public void shouldResolveSimpleFunction5() {
-    final Function function =
-        new FunctionImpl(new Exponentiation(new Constant(36), new Constant(0.5)));
+    final Function function = new FunctionImpl(new Sqrt(new Constant(36)));
 
     final Double result = function.compute();
 

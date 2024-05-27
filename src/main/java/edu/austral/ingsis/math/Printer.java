@@ -1,5 +1,6 @@
 package edu.austral.ingsis.math;
 
+@SuppressWarnings("SizeReplaceableByIsEmpty")
 public class Printer implements Visitor {
   private StringBuilder printResult = new StringBuilder();
 
@@ -94,5 +95,12 @@ public class Printer implements Visitor {
   @Override
   public void visit(Function function) {
     function.getRootSymbol().accept(this);
+  }
+
+  @Override
+  public void visit(Sqrt sqrt) {
+    printResult.append("sqrt(");
+    sqrt.getSubSymbol().accept(this);
+    printResult.append(")");
   }
 }
